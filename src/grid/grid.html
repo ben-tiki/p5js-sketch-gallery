@@ -1,0 +1,51 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="grid.css">
+    <link rel="icon" href="../../common-assets/coding_icon.png" type="image/png" sizes="16x16">
+    <title>Grid</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #493323;
+        user-select: none;
+    }
+
+    #message {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.8rem;
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+        user-select: none;
+        color: #FFDF91;
+    }
+</style>
+
+<body>
+    <div id="message">PRESS SPACE TO PLAY/PAUSE THE SONG</div>
+    <div id="content">
+        <div class="overlay">
+            <div class="overlay-element top-right"></div>
+            <div class="overlay-element bottom-left"></div>
+        </div>
+    </div>
+
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/addons/p5.sound.min.js"></script>
+    <script src="grid.js"></script>
+</body>
+
+
+</html>

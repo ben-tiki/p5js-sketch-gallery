@@ -1,0 +1,24 @@
+body {
+    background-size: 300%;
+    background-image: var(--gradient);
+    animation: bg-animation 50s infinite;
+}
+
+:root {
+    --gradient: linear-gradient(45deg, #e1f1fd, #c8d9ed, #c1d8f0, #c8d9ed, #e1f1fd);
+}
+
+
+@keyframes bg-animation {
+    0% {
+        background-position: left
+    }
+
+    50% {
+        background-position: right
+    }
+
+    100% {
+        background-position: left
+    }
+}
