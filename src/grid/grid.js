@@ -8,43 +8,38 @@ function preload() {
 // ANIMATION AND SETUP
 // ---------------------------------------
 const canvasSize = 800;
-const scale = 18;
-const gridWidth = 800;
-const gridHeight = 500;
+const scale = 10;
+const gridWidth = 900;
+const gridHeight = 600;
 
-const noiseMult = 100;
-const waveMult = 10;
+const waveMult = 25;
 
 let terrain = [];
-let cols, rows;
+let cols;
+let rows;
+
+const backgroundColor = '#493323';
+const gridColor = '#FFDF91';
 
 let fft;
 function setup() {
-	createCanvas(canvasSize, canvasSize, WEBGL).id('canvas');
+	createCanvas(canvasSize, canvasSize, WEBGL).id('grid');
 
 	cols = gridWidth / scale;
 	rows = gridHeight / scale;
 
 	// initialize terrain with zeros
-	for (let x = 0; x < cols; x++) {
-		terrain[x] = [];
-		for (let y = 0; y < rows; y++) {
-			terrain[x][y] = 0;
-		}
-	}
+	terrain = Array.from({length: cols}, () => Array(rows).fill(0));
 
 	// audio
 	fft = new p5.FFT();
 
 	strokeWeight(0.5);
 
-	pixelDensity(3);
 }
 
 // DRAW
 // ---------------------------------------
-const backgroundColor = '#493323';
-const gridColor = '#FFDF91';
 function draw() {
 	updateTerrain();
 
@@ -54,25 +49,21 @@ function draw() {
 
 	// fill
 	let fillColor = color(gridColor);
-	fillColor.setAlpha(60);
+	fillColor.setAlpha(50);
 	fill(fillColor);
 
 	// camera
-	translate(0, -100, -500);
+	translate(0, -200, -500);
 	rotateX(PI / 4);
 	rotateY(-PI / 20);
 	translate(-gridWidth / 2, -gridHeight / 2);
 
 	for (let y = 0; y < rows - 1; y++) {
-		beginShape(TRIANGLE_STRIP);
+		beginShape(QUAD_STRIP);
 
 		for (let x = 0; x < cols - 1; x++) {
-			// apply noise
-			let noiseMultFinal = noise(x * 0.05, y * 0.05, frameCount * 0.01) * noiseMult;
-
-			vertex(x * scale, y * scale, terrain[x][y] + noiseMultFinal);
-			vertex(x * scale, (y + 1) * scale, terrain[x][y + 1] + noiseMultFinal);
-			
+			vertex(x * scale, y * scale, terrain[x][y]);
+			vertex(x * scale, (y + 1) * scale, terrain[x][y + 1]);
 		}
 		endShape();
 	}
@@ -87,16 +78,21 @@ function updateTerrain() {
 	let centerX = floor(cols / 2);
 	let centerY = floor(rows / 2);
 
-	let radius = min(centerX, centerY) * 5;
-	let maxHeight = 200;
+	let radius = sqrt(sq(centerX) + sq(centerY));
+	let maxHeight = 100;
 
-	// Loop through the terrain grid
+	// loop through the terrain grid
 	for (let x = 0; x < cols; x++) {
 		for (let y = 0; y < rows; y++) {
 			let distance = dist(x, y, centerX, centerY);
 
-			let index = floor(map(distance, 0, radius, 0, spectrum.length));
-			let height = map(spectrum[index], 0, 255, 0, maxHeight) * (1 - (distance / radius) * 1.5);
+			let index = floor(map(distance, 0, radius, 0, spectrum.length / 1.5));
+			let height = map(spectrum[index], 0, 255, 0, maxHeight);
+
+			// adjust the wave effect to be more pronounced in the center
+			let waveFactor = map(distance, 0, radius, 2.5, 1); 
+
+			height += (sin(frameCount * 0.025 + distance * 0.2) * waveMult) * waveFactor;
 
 			terrain[x][y] = lerp(terrain[x][y], height, interpolationFactor);
 		}
