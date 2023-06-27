@@ -15,17 +15,17 @@ float random (vec2 coords) {
 // perlin noise
 float noise(vec2 coords) {
     
-	vec2 i = floor(coords);
-	vec2 f = fract(coords);
+    vec2 i = floor(coords);
+    vec2 f = fract(coords);
 
-	float a = random(i);
-	float b = random(i + vec2(1.0, 0.0));
-	float c = random(i + vec2(0.0, 1.0));
-	float d = random(i + vec2(1.0, 1.0));
+    float a = random(i);
+    float b = random(i + vec2(1.0, 0.0));
+    float c = random(i + vec2(0.0, 1.0));
+    float d = random(i + vec2(1.0, 1.0));
 
-	vec2 cubic = f * f * (3.0 - 2.0 * f);
+    vec2 cubic = f * f * (3.0 - 2.0 * f);
 
-	return mix(a, b, cubic.x) + (c - a) * cubic.y * (1.0 - cubic.x) + (d - b) * cubic.x * cubic.y;
+    return mix(a, b, cubic.x) + (c - a) * cubic.y * (1.0 - cubic.x) + (d - b) * cubic.x * cubic.y;
 }
 
 // fractal brownian motion

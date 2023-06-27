@@ -1,8 +1,8 @@
 const verticalRectColors = ['#ffffff', '#ffec06', '#0cdbf9', '#7cfe0a', '#ff1be1', '#f50158', '#551cff'];
 const horizontalRectColors = ['#1717f9', '#000000', '#fd19de', '#000000', '#92fce8', '#000000', '#cdcdcd'];
 
-let gradientStart = '#f6f6f6',
-	gradientEnd = '#666666';
+let gradientStart = '#f6f6f6';
+let gradientEnd = '#666666';
 
 const bannerColor = '#000000';
 const textColor = '#ffffff';

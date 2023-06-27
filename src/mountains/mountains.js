@@ -1,37 +1,37 @@
-const BACKGROUND_COLOR = "#FFFFFF";
-const FILL_COLOR_ONE = "#666666";
-const FILL_COLOR_TWO = "#444444";
-const FILL_COLOR_THREE = "#171717";
+const backgroundColor = "#FFFFFF";
+const fillColorOne = "#666666";
+const fillColorTwo = "#444444";
+const fillColorThree = "#171717";
 
-const SKETCH_WIDTH = window.innerWidth + 100;
-const SKETCH_HEIGHT = window.innerHeight;
+const sketchWidth = window.innerWidth + 100;
+const sketchHeight = window.innerHeight;
 
-const VERTEX_STEP = 10;
-const NOISE_STEP = 0.07;
-const STATIC_NOISE_DENSITY = 400_000;
+const vertexStep = 10;
+const noiseStep = 0.07;
+const staticNoiseDensity = 400_000;
 
-// CREATE CANVAS
-// ---------------------------------------
+// SETUP
+// ----------------------------------------
 function setup() {
-    createCanvas(SKETCH_WIDTH, SKETCH_HEIGHT).id('mountains-canvas')
+    createCanvas(sketchWidth, sketchHeight).id('mountains')
     noLoop();
 };
 
 // DRAW
 // ----------------------------------------
 function draw() {
-    background(BACKGROUND_COLOR);
+    background(backgroundColor);
 
     // 'mountains' from top to bottom
-    fill(FILL_COLOR_ONE);
+    fill(fillColorOne);
     noStroke();
     drawMountain(0, 150, 300);
 
-    fill(FILL_COLOR_TWO);
+    fill(fillColorTwo);
     noStroke();
     drawMountain(100, 200, 320);
 
-    fill(FILL_COLOR_THREE);
+    fill(fillColorThree);
     noStroke();
     drawMountain(200, 250, 400);
 
@@ -41,10 +41,10 @@ function draw() {
 function drawMountain(yoff, ymin, ymax) {
     beginShape();
     let xoff = 0;
-    for (let x = 0; x <= width; x += VERTEX_STEP) {
+    for (let x = 0; x <= width; x += vertexStep) {
         let y = map(noise(xoff, yoff), 0, 1, ymin, ymax);
         vertex(x, y);
-        xoff += NOISE_STEP;
+        xoff += noiseStep;
     }
     vertex(width, height);
     vertex(0, height);
@@ -53,7 +53,7 @@ function drawMountain(yoff, ymin, ymax) {
 
 function drawStaticNoise() {
     strokeWeight(1);
-    for (let i = 0; i < STATIC_NOISE_DENSITY; i++) {
+    for (let i = 0; i < staticNoiseDensity; i++) {
         const x = random(width);
         const y = random(height);
         stroke(255, 15);

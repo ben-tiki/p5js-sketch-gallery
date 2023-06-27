@@ -1,5 +1,5 @@
 #ifdef GL_ES
-precision highp float;
+  precision highp float;
 #endif
 
 varying vec2 vTexCoord;

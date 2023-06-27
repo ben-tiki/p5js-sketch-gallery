@@ -1,6 +1,6 @@
 //standard vertex shader
 #ifdef GL_ES
-precision highp float;
+  precision highp float;
 #endif
 #extension GL_OES_standard_derivatives : enable
 
@@ -31,17 +31,17 @@ float random(in vec2 st) {
 }
 
 float noise(vec2 st) {
-    vec2 i = floor(st);
-    vec2 f = fract(st);
-    vec2 u = f * f * (3.0 - 2.0 * f);
+  vec2 i = floor(st);
+  vec2 f = fract(st);
+  vec2 u = f * f * (3.0 - 2.0 * f);
 
-    vec2 r1 = i + vec2(0.0, 0.0);
-    vec2 r2 = i + vec2(1.0, 0.0);
-    vec2 r3 = i + vec2(0.0, 1.0);
-    vec2 r4 = i + vec2(1.0, 1.0);
+  vec2 r1 = i + vec2(0.0, 0.0);
+  vec2 r2 = i + vec2(1.0, 0.0);
+  vec2 r3 = i + vec2(0.0, 1.0);
+  vec2 r4 = i + vec2(1.0, 1.0);
 
-    return mix(mix(random(r1), random(r2), u.x),
-               mix(random(r3), random(r4), u.x), u.y);
+  return mix(mix(random(r1), random(r2), u.x),
+              mix(random(r3), random(r4), u.x), u.y);
 }
 
 void main() {

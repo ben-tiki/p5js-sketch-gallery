@@ -9,11 +9,11 @@ let drone;
 const droneMaxLigth = 200;
 
 const containerRadius = 350;
-const orbsArray = [],
-    orbRadius = 8,
-    orbVelocity = 1,
-    orbColor = 'golden', // -> golden, random, blue or red
-    numOrbs = scaleNotes.length;
+const orbsArray = [];
+const orbRadius = 8;
+const orbVelocity = 1;
+const orbColor = 'golden'; // -> golden, random, blue or red
+const numOrbs = scaleNotes.length;
 
 // PRELOAD SHADERS
 // ---------------------------------------

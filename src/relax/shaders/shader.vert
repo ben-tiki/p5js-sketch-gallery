@@ -1,5 +1,5 @@
 #ifdef GL_ES
-precision highp float;
+  precision highp float;
 #endif
 
 attribute vec3 aPosition;

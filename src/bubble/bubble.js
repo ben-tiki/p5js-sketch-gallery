@@ -1,6 +1,7 @@
 // AUDIO & SHADERS
 // ---------------------------------------
-let glassShader, song;
+let glassShader;
+let song;
 function preload() {
     glassShader = loadShader('shaders/shader.vert', 'shaders/shader.frag');
 	song = loadSound('../../audio/song.mp3');
@@ -8,7 +9,8 @@ function preload() {
 
 // SETUP
 // ---------------------------------------
-let fft, amplitude;
+let fft;
+let amplitude;
 function setup() {
     createCanvas(windowWidth, windowHeight, WEBGL);
 

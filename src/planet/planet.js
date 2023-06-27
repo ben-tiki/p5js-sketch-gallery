@@ -1,29 +1,31 @@
-const animationWidth = 2500,
-    animationHeight = 1500;
+const animationWidth = 2500;
+const animationHeight = 1500;
 
 const planetRadius = 200;
 
-const numRingParticles = 1024,
-    ringParticles = [],
-    ringParticleDiameter = 1.5,
-    ringParticleSpeed = 0.001,
-    ringRadius = 1;
+const numRingParticles = 1024;
+const ringParticles = [];
+const ringParticleDiameter = 1.5;
+const ringParticleSpeed = 0.001;
+const ringRadius = 1;
 
-const stars = [],
-    numStars = 1000;
+const stars = [];
+const numStars = 1000;
 
 let shootingStars = [];
 
-const planetColor = 'rgb(235,78,117)',
-    backgroundColor = 'rgb(30,33,113)',
-    ringColor = 'rgb(255,117,148)',
-    starColor = 'rgb(255,117,148)';
+const planetColor = 'rgb(235,78,117)';
+const backgroundColor = 'rgb(30,33,113)';
+const ringColor = 'rgb(255,117,148)';
+const starColor = 'rgb(255,117,148)';
 
 const audioWaveIntesity = 40;
 
 // PRELOAD AUDIO
 // ---------------------------------------
-let song, fft, amplitude;
+let song;
+let fft
+let amplitude;
 function preload() {
     song = loadSound('../../audio/song.mp3');
 }
@@ -68,8 +70,8 @@ function draw() {
     fft.analyze();
     let waveForm = fft.waveform();
 
-    let ampLevel = amplitude.getLevel(),
-        ampMap = map(ampLevel, 0, 1, 1, 1.2);
+    let ampLevel = amplitude.getLevel();
+    let ampMap = map(ampLevel, 0, 1, 1, 1.2);
 
     // draw stars
     push();

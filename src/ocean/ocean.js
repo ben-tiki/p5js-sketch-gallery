@@ -1,34 +1,28 @@
-let scaleRate,
-	animationSize = 550;
+const animationSize = 550;
 
 // stars
 const starNumber = 50;
-
-let stars = [];
-let shootingStars = [];
+const stars = [];
+const shootingStars = [];
 
 // planets
-const planetX = animationSize - 150,
-	planetY = animationSize - 350;
+const planetX = animationSize - 150;
+const planetY = animationSize - 350;
 
 // waves
-const waveNumber = 5,
-	waveSeparation = 20,
-	waveStart = 350;
+const waveNumber = 5;
+const waveSeparation = 20;
+const waveStart = 350;
 
-const waveColor = 'rgb(255, 253, 250)',
-	backgroundColor = 'rgb(95, 158, 160)',
-	sunColor = 'rgb(41, 106, 109)';
+const waveColor = 'rgb(255, 253, 250)';
+const backgroundColor = 'rgb(95, 158, 160)';
+const sunColor = 'rgb(41, 106, 109)';
 
 // SETUP AND STAR CREATION
 // ---------------------------------------
 function setup() {
-
-	// canvas creation
-	minSize = min(windowWidth, windowHeight);
-	scaleRate = minSize / animationSize;
 	
-	createCanvas(animationSize, animationSize).id('space');
+	createCanvas(animationSize, animationSize).id('ocean');
 
 	// star creation
 	for (let i = 0; i < starNumber; i++) {
@@ -112,7 +106,7 @@ function drawWave(waveIndex) {
 		let x = map(i, 0, width, 0, TWO_PI);
 		let y = sin(x + frameCount / waveSpeed) * waveSmoothing;
 		y += noise((i * 1) / 100, (frameCount * 1) / 100) * (10 - waveIndex * 10);
-		vertex(i, y + waveIndex * waveSeparation + waveStart * scaleRate);
+		vertex(i, y + waveIndex * waveSeparation + waveStart);
 	}
 
 	vertex(width, height);
@@ -143,7 +137,7 @@ function drawShootingStar(star) {
 	star.x += star.speed;
 	star.y += star.speed;
 
-	if (star.y > waveStart * scaleRate) {
+	if (star.y > waveStart) {
 		shootingStars.splice(shootingStars.indexOf(star), 1);
 	}
 

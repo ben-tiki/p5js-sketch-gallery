@@ -1,14 +1,14 @@
 // sphere with heart shape parameters
-let bump = 0.2,
-	thetaVal = 6,
-	phyVal = 5;
+let bump = 0.2;
+let thetaVal = 6;
+let phyVal = 5;
 
-const maxBump = 2,
-	maxThetaVal = 6,
-	minThetaVal = -6;
+const maxBump = 2;
+const maxThetaVal = 6;
+const minThetaVal = -6;
 
-const firstPulse = 150,
-	secondPulse = 165;
+const firstPulse = 150;
+const secondPulse = 165;
 
 // colors
 const strokeColor = '#c61a09';

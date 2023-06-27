@@ -1,15 +1,15 @@
-const marginTop = 150,
-  marginBottom = 100,
-  waveSpacing = 25;
+const marginTop = 150;
+const marginBottom = 100;
+const waveSpacing = 25;
 
-let waveAmplitude = 100,
-  wavePoints = 5,
-  waveLength = 8e6,
-  waveSmoothnessFactor = 120,
-  waveAmplitudeStep = 10;
+const waveAmplitude = 100;
+const wavePoints = 5;
+const waveLength = 8e6;
+const waveSmoothnessFactor = 120;
+const waveAmplitudeStep = 10;
 
-const waveColor = "#F8F8FF",
-  backgroundColor = "#1c2e4a";
+const waveColor = "#F8F8FF";
+const backgroundColor = "#1c2e4a";
 
 function setup() {
   createCanvas(500, 600).id("waves");
